@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Center Name"
+        android:padding="3dp"
+        android:textColor="@color/black"
+        android:layout_margin="3dp"
+        android:drawableLeft="@drawable/baseline_local_hospital_24"
+        android:drawablePadding="4dp"
+        android:id="@+id/centername">
+
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Center Location"
+        android:id="@+id/centerlocation"
+        android:layout_below="@+id/centername"
+        android:layout_margin="3dp"
+        android:padding="3dp"
+        android:textColor="@color/black"
+        android:drawableStart="@drawable/baseline_location_on_24"
+        android:drawablePadding="4dp"
+        android:drawableLeft="@drawable/baseline_location_on_24">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/centertiming"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/centerlocation"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="3dp"
+        android:drawableStart="@drawable/baseline_access_time_24"
+        android:drawableLeft="@drawable/baseline_access_time_24"
+        android:drawablePadding="4dp"
+        android:text="Center Timing"
+        android:textColor="@color/black">
+
+    </TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:id="@+id/LL"
+        android:layout_margin="3dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/centertiming">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Vaccine Name"
+            android:drawableLeft="@drawable/baseline_airline_seat_flat_angled_24"
+            android:layout_margin="3dp"
+            android:textColor="@color/black"
+            android:id="@+id/VaccineName">
+        </TextView>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Fees"
+                android:id="@+id/VaccinatinFees"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_margin="3dp">
+
+            </TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:layout_below="@+id/LL"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Age Limit"
+            android:id="@+id/age"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_margin="3dp"
+            android:padding="3dp">
+
+        </TextView>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Avaliability"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:layout_margin="3dp"
+            android:padding="3dp"
+            android:id="@+id/Avaliability">
+
+        </TextView>
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
