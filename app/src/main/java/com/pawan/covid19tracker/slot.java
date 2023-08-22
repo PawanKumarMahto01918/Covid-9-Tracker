@@ -1,11 +1,8 @@
 package com.pawan.covid19tracker;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -15,6 +12,11 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -29,17 +31,20 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.SimpleTimeZone;
 
 public class slot extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
-    String baseURL="https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin";
+    Button getresult;
+
+    String baseURL = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin";
     private EditText areaPINcode;
     private Button forwardbtn;
     ProgressBar holdOnProgress;
     private ArrayList<Vaccinemodel> vaccination_center;
     private RecyclerView resultRecyclerView;
-    String areaPIN,avlDate;
+    String areaPIN, avlDate;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +53,18 @@ public class slot extends AppCompatActivity implements DatePickerDialog.OnDateSe
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_slot);
 
+        getresult = findViewById(R.id.result);
+        getresult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(slot.this, centerResult.class);
+                startActivity(intent);
+            }
+        });
+
         mapViews();
-        
+
         onClickSetup();
     }
 
@@ -61,7 +76,7 @@ public class slot extends AppCompatActivity implements DatePickerDialog.OnDateSe
 
                 holdOnProgress.setVisibility(View.VISIBLE);
                 DialogFragment dp = new picdate();
-                dp.show(getSupportFragmentManager(),"pick a date");
+                dp.show(getSupportFragmentManager(), "pick a date");
             }
         });
     }
@@ -79,18 +94,18 @@ public class slot extends AppCompatActivity implements DatePickerDialog.OnDateSe
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
         Calendar k = Calendar.getInstance();
-        k.set(Calendar.YEAR,year);
-        k.set(Calendar.MONTH,month);
-        k.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+        k.set(Calendar.YEAR, year);
+        k.set(Calendar.MONTH, month);
+        k.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
         dateFormat.setTimeZone(k.getTimeZone());
-        String d= dateFormat.format(k.getTime());
+        String d = dateFormat.format(k.getTime());
         setup(d);
     }
 
     private void setup(String d) {
-        avlDate=d;
+        avlDate = d;
         fetchDataNow();
     }
 
@@ -132,7 +147,7 @@ public class slot extends AppCompatActivity implements DatePickerDialog.OnDateSe
             @Override
             public void onErrorResponse(VolleyError error) {
                 holdOnProgress.setVisibility(View.INVISIBLE);
-                Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(this);

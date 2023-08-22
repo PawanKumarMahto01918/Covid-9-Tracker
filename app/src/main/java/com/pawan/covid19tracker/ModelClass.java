@@ -2,7 +2,7 @@ package com.pawan.covid19tracker;
 
 public class ModelClass {
 
-    String cases,todayCases,todayDeath,recovered,todayRecovered,active,country;
+    String cases, todayCases, todayDeath, recovered, todayRecovered, active, country;
 
     public ModelClass(String cases, String todayCases, String todayDeath, String recovered, String todayRecovered, String active, String country) {
         this.cases = cases;
